@@ -1,0 +1,31 @@
+db.places.insert({name:'Office1', 'city':'Bengaluru', 'location':{"type":"Point",
+"coordinates":[50.12345, 37.44322] }});
+db.places.insert({name:'Office2', 'city':'Bengaluru', 'location':{"type":"Point",
+"coordinates":[51.125, 37.2] }});
+db.places.insert({name:'Office3', 'city':'Bengaluru', 'location':{"type":"Point",
+"coordinates":[52.1345, 44.412] }});
+db.places.insert({name:'Office4', 'city':'Bengaluru', 'location':{"type":"Point",
+"coordinates":[55.1, 56.4122] }});
+db.places.insert({name:'Office5', 'city':'Bengaluru', 'location':{"type":"Point",
+"coordinates":[67.0, 75.44322] }});
+db.places.insert({name:'Office6', 'city':'Bengaluru', 'location':{"type":"Point",
+"coordinates":[-55.5, 55.44322] }});
+db.places.insert({name:'Office7', 'city':'Bengaluru', 'location':{"type":"Point",
+"coordinates":[88.145, 36.42122] }});
+db.places.insert({name:'Office8', 'city':'Bengaluru', 'location':{"type":"Point",
+"coordinates":[77.145, 77.1322] }});
+db.places.insert({name:'Office9', 'city':'Bengaluru', 'location':{"type":"Point",
+"coordinates":[56.123, 88.44322] }});
+
+
+db.sentence2.insert({"words":"dog"});
+db.sentence2.insert({"words":"dog cat"});
+db.sentence2.insert({"words":"cat dog"});
+db.sentence2.insert({"words":"dog tree cat
+running"});
+db.sentence2.insert({"words":"its always good to have
+a dog"});
+db.sentence2.insert({"words":"dogs and cats play "});
+db.sentence2.insert({"words":"cat kills rat"});
+db.sentence2.insert({"words":"cat is cute"});
+db.sentence2.insert({"words":"dog snouser"});

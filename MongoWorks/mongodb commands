@@ -1,0 +1,437 @@
+ mongod --port 27018 --dbpath /Users/rupa.j/Desktop/MongoWorks/db 
+ 
+  pwd
+  
+  
+  
+ cd /Users/rupa.j/Desktop/MongoWorks
+ 
+  mongod --dbpath ./db --port 27018
+  
+  
+  mongo --port 27018
+  
+  
+  mongo
+  
+  
+   show dbs
+   
+   
+    use exdb
+    
+    show dbs
+    
+    db
+    
+     use exdb
+     
+     
+     var itr=db.emps.find();
+     while(itr.hasNext()){var temp=itr.next();db.emps1.insert({empname:temp.empname,empemail:temp.empemail});}
+     
+      db.emps1.find();
+     
+     
+     db.emps.insert({empid:101,empname:"rahul",empid:"rupa.jain@gmail.com"})
+     db.capColl.insert({name:"monitor"});
+     db.capColl.insert({name:"presentor"});
+     db.capColl.insert({name:"charger"});
+     db.capColl.insert({name:"mobile"});
+     db.capColl.insert({name:"marker"});
+     db.capColl().find();
+
+     db.emps.find({empid:{$gt:101}})
+     db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]})
+     
+     db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1})
+     
+     db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1})
+     
+     db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).count();
+db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).limit();
+
+
+db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).sort().skip().limit();
+
+
+db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).sort({-1}).skip().limit();
+
+db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).sort({empid:1,empname:-1}).skip().limit();
+
+
+db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1})
+     
+     db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1})
+     
+     
+     select empid,empname db.emps.find({},{projection 0 or 1});
+     db.createCollection("capColl",{capped:true,size:4000,max:5});
+     
+     
+     db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).sort({empid:1,empname:-1}).skip().limit();
+     
+     db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).sort({empid:1,empname:-1}).skip(2).limit();
+     
+     db.emps.find({emailed:{$regex:/gmail/}})
+     
+     db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).count();
+     
+     db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1})
+     
+     
+     db.emps.insert([{empid:1},{},{}])
+
+     db.emps.find({emailed:{$regex:/gmail/}})
+     
+     db.emps.find({empsal:{$exists:true}})
+     
+     db.emps.insert({empid:110,empname:"gautam",emailed:"rahul.dar@gmail.com",empsal:333333})
+     
+     db.emps.find({empsal:{$exists:true}})
+     
+     db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).sort({empid:1,empname:-1}).skip(2).limit();
+
+db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).sort({empid:1,empname:-1}).skip(2).limit();
+
+db.emps.insert({empid:110,empname:"gautam",emailed:"rahul.dar@gmail.com",empsal:333333})
+
+
+db.emps.find({empsal:{$exists:true}})
+
+db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1})
+
+
+db.emps.find({$or:[{empid:{$gt:101}},{emailed:"rupa.jain85@gmail.com"}]},{_id:0,empname:1,emailed:1}).sort({empid:1,empname:-1}).skip(2).limit();
+
+mongoimport --file db.json --db exdb --collection emps
+
+mongoimport --file employee.json --db exdb --collection emps
+
+
+     
+    var itr=db.emps.find()
+    while(itr.hasNext()){
+    var temp=itr.next()
+    print(temp)
+    }
+    
+    
+    
+    db.food.find({"ratings.1":7})
+    
+    
+    db.food.find({"ratings.0":7})
+    
+    
+    db.food.find({ratings:[7]})//exact match
+    db.food.find({"ratings.0":8})//indexed match
+    db.food.find({ratings:7})//anywhere command
+    
+    db.food.find({ratings:{$elemMatch:{$gt:9}}})//in conditional match
+     db.food.find({ratings:{$gt:6}})//conditional match elemMatch tag is optional
+    
+    //update,upsert.modify
+    db.emps.update({empsal:{$exists:false}},{$set:{empsal:300000}})
+    db.emps.update({empsal:{$exists:false}},{$set:{empsal:300000}})
+    
+    db.emps.update({empsal:{$exists:false}},{$set:{empsal:300000}},{multi:true})
+    
+    db.emps.update({empname:"chandini"},{$set:{empsal:400000,emailed:"chandini@gmail.com",empid:109}},{upsert:true})
+    
+    db.emps.update({empname:"chandini"},{$set:{empsal:400000,emailed:"chandini@gmail.com",empid:109}},{multi:true})
+    
+    db.emps.update({empname:"chandini"},{$set:{empsal:400000,emailed:"chandini@gmail.com",empid:109}},{multi:true})
+db.emps.update({empname:"chandini"},{$set:{empsal:400000,emailed:"chandini@gmail.com",empid:109}},{multi:true})
+
+db.emps.update({empname:"chandini"},{$set:{empsal:400000,emailed:"chandini@gmail.com",empid:118}},{multi:true})
+db.emps.update({empname:"chandini"},{$set:{empsal:400000,emailed:"chandini@gmail.com",empid:118}},{multi:false})
+db.emps.update({empname:"chandini"},{$set:{empsal:400000,emailed:"chandini1@gmail.com",empid:118}},{multi:false})
+
+ db.emps.update({empid:{$gt:105}},{$unset:{empsal:true}},{multi:true})
+ 
+ db.emps.save({empid:114,empname:"sudha"})
+ 
+ 
+ db.emps.save({empid:114,empname:"sudha"})
+ 
+ db.emps.find()
+ 
+ 
+ db.emps.save({empid:114,empname:"sudha","_id" : ObjectId("5b5bf890407b4c6b5153c6c3")})
+ 
+ 
+db.emps.save({empid:114,empname:"sudha","_id" :101)})
+
+db.emps.save({empid:114,empname:"sudha","_id" :101})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : 101 })
+> db.emps.save({empid:114,empname:"sudha","_id" :101})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.emps.save({empid:114,empname:"sashidhar","_id" :101})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.emps.save({empid:114,empname:"sashidhar","_id" :101})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.emps.save({empid:114,empname:"sashidhar","_id" :123})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : 123 })
+> db.emps.save({empid:114,empname:"sashidhar","_id" :123})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.emps.save({empid:114,empname:"sashr","_id" :23})
+WriteResult({ "nMatched" : 0, "nUpserted" : 1, "nModified" : 0, "_id" : 23 })
+> db.emps.save({empid:114,empname:"sashr","_id" :23})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+
+
+
+db.sample.update({empname:"akshay"},{$set:{empsal:"2222"}},{upsert:true})
+
+
+db.sample.update({empname:"akshay"},{$set:{empsal:"2222"}},{upsert:true})
+WriteResult({
+	"nMatched" : 0,
+	"nUpserted" : 1,
+	"nModified" : 0,
+	"_id" : ObjectId("5b5bfa76b4f0fe8fc4f196da")
+})
+
+
+db.emps1.find()
+db.emps1.remove({})
+
+    db.emps1.remove({empname:"eee"})
+    
+    db.emps1.update({empid:{$exists:true}},{$set:{empname:"gauggg"}})
+    
+    
+    var itr=db.emps.find();
+    while(itr.hasNext()){   print(tojson(itr.next())); }
+    
+    
+    var itr=db.emps.find(); itr.forEach(printjson)
+    
+    db.emps.find().forEach(printjson)
+    
+    while(itr.hasNext()){   printjson(itr.next()); }
+    
+    
+    var itr=db.emps.find() ;while(itr.hasNext()){   printjson(itr.next()) }
+    
+    
+    
+    
+    
+    mongoimport --db exdb --collection population --file ./population.json --port 27018
+    
+    
+    
+    
+    db.population.findOne();
+    
+     db.population.find();
+    db.population.find().count()
+
+
+db.population.find({state:'MA'})
+db.population.find({state:'MA'}).count()
+db.population.find({state:'MA'}).explain("executionStats");
+
+
+db.population.createIndex({state:1});
+
+db.population.find({state:'MA'}).
+
+db.population.getIndexes();
+
+db.population.find({pop:{$gt:15000}}).explain("executionStats");
+
+db.population.createIndex({state:1,pop:-1});
+db.population.createIndex({state:-1,pop:1});
+    
+    
+    db.population.find({state:"MA",pop:{$gt:15000}}).explain("executionStats");
+    
+    db.population.find({pop:{$gt:15000},state:"MA"}).explain("executionStats");
+    
+    db.population.find({})
+    db.population.find({pop:{$gt:15000},state:"MA"}).hint({state:1,pop:-1}).explain("executionStats");
+    
+    
+    db.population.stats();
+    
+    db.emps.find();
+    
+    db.emps.createIndex({empid:1},{unique:true})
+    
+        db.uemps.createIndex({empid:1},{unique:true})
+        
+        db.uemps.save({empid:101,empname:"lohit"})
+        
+        
+        
+        sb.semps.save({empname:"Ankit"})
+        
+        db.semps.save({empname:"Tejaswani",empsal:12111})
+        db.semps.save({empname:"Vamsi",empsal:23333})
+        db.semps.save({empname:"aruna",empsal:4556})
+        db.semps.save({empname:"akshaya",empsal:33344})
+        
+        db.semps.find({empsal:{$lt:33300}})
+        
+        
+         db.semps.find({empsal:{$lt:33300}})
+    db.semps.find().sort({empsal:1})
+    
+    db.semps.createIndex({empsal:1},{sparse:true})
+    db.semps.find().sort({empsal:1}).hint({empsal:1})
+    
+    db.semps.find().sort({empsal:1}).hint({empsal:1})
+    
+    //sparse index
+    db.semps.createIndex({empsal:1},{sparse:true})
+    
+    //geo
+     db.places.createIndex({'location':'2dsphere'})
+     db.places.getIndexes()
+     db.places.find({ location:{ $near: { $geometry: { type:'Point',coordinates:[50.66,50.443]}, $maxDistance:2000000 } } }).pretty()
+     
+     db.places.getIndexes()
+    
+    
+    
+    db.sentence1.find({$text:{$search:dog}},{score:{$meta:'textScore'}}).sort({score:{$meta:'textScore'}})
+     db.sentence2.find({$text:{$search:'dog'}},{score:{$meta:'textScore'}}).sort({score:{$meta:'textScore'}})
+
+    db.sentence2.createIndex({words:"text"})
+    db.uemps.dropIndex({empid:1})
+    db.sentence1.find({$text:{$search:dog}},{score:{$meta:'textScore'}}).sort({score:{$meta:'textScore'}})
+    
+    db.uemps.reIndex();
+    
+    
+    day3:
+    db.population.find()
+    
+    
+    db.population.aggregate([
+    {$group:{_id:"$state",totalPop:{$sum:"$pop"}}},
+    ])
+    
+    
+    
+    db.population.aggregate( [
+{ $group: { _id: "$state", totalPop: { $sum:
+"$pop" } } },
+{ $match: { totalPop: { $gte: 10*1000*1000 } } }
+] )
+
+
+
+
+
+
+
+    
+    
+db.population.aggregate( [{ $group: { _id: { state: "$state", city: "$city" },pop: { $sum: "$pop" } } },{ $group: { _id: "$_id.state", avgCityPop: { $avg:"$pop" } } }] )
+
+
+db.population.aggregate( [
+{ $group:
+{
+_id: { state: "$state", city: "$city" },
+pop: { $sum: "$pop" }
+}
+},
+{ $sort: { pop: 1 } },
+{ $group:
+{
+_id : "$_id.state",
+biggestCity: { $last: "$_id.city" },
+biggestPop: { $last: "$pop" },
+smallestCity: { $first: "$_id.city" },
+smallestPop: { $first: "$pop" }
+}
+}]);
+
+
+db.colors.insert({name:"green",value:23});
+db.colors.insert({name:"blue",value:44});
+db.colors.insert({name:"black",value:2});
+db.colors.insert({name:"blue",value:55});
+db.colors.insert({name:"blue",value:12});
+db.colors.insert({name:"black",value:8});
+
+//map can have any function logic
+var map=function(){
+emit(this.name,this.value)
+}
+
+
+reduce=function(key,values){var sum=0;for(var i=0;i<values.length;i++){sum+=values[i];}}
+
+
+
+
+var mitr=db.colors.mapReduce(map,reduce,{out:"my result"})
+
+mitr;
+mitr.result;
+
+db[mitr.result].find()
+
+//mongo replica 
+rm -rf * 
+mongod --replSet exrs  --dbpath ./rs1 --port 27027
+mongod --replSet exrs --dbpath  ./rs2 --port 27028 --oplogSize 64
+mongod --replSet exrs --dbpath  ./rs3 --port 27029 --oplogSize 64
+mongod --replSet exrs --dbpath  ./rs4 --port 27030 --oplogSize 64
+
+//in another window go to directory mongoWorks and start mongo shell
+mongo --port 27027
+ rs.status()
+ db.isSlave
+ db.isMaster()
+ rs.slaveOk()
+ conf=rs.conf()
+conf
+conf.members[0].priority=0;
+rs.reconfig(conf)
+conf
+
+use adminS
+db.shutDownServer()
+
+
+
+ 
+ 
+  config={ _id:"exrs",members:[{_id:0,host:"localhost:27027"},{_id:1,host:"localhost:27028"},{_id:2,host:"localhost:27028"},{_id:3,host:"localhost:27029"}]}
+ rs.initiate(config)
+ rs.initiate(config)
+ rs.status()
+ use repdb
+ db
+ db.emps.insert({empid:101,empname:"kanchan",empsal:2000})
+ 
+ 
+ db.shutdownServer()
+ 
+
+//start mongod
+//mongod --replSet exrs
+//to make it up again primary 
+//mongod --replSet exrs --logpath ./rs1/rslog.log --dbpath ./rs1 --port 27018 --smallfiles --oplogSize 64
+
+
+
+//mongod --replSet exrs --dbpath ./rs3/rslog.log --dbpath ./rs3 --port 27020 --oplogSize 64
+
+//mongod --replSet exrs --dbpath ./rs4/rslog.log --dbpath ./rs3 --port 27021--oplogSize 64
+
+show collections
+emps
+myimage.chunks
+myimage.files
+
+db.myimage.chunks.find()
+db.myimage.files.find()
+

@@ -1,0 +1,89 @@
+. what is Apache Kafka?
+Publish-subscribe messaging system
+
+Apache Kafka is a publish-subscribe messaging system developed by Apache written in Scala. It is a distributed, partitioned and replicated log service. 
+Learn more about Apache Kafka, follow the link: Apache Kafka Tutorial- Apache Kafka For Beginners
+
+
+What is ISR in kafka?
+“in-sync” replicas
+
+Kafka is a distributed, partitioned, replicated commit log service. It provides the functionality of a “isr” is the set of “in-sync” replicas. 
+Learn more about Apache Kafka, follow the link: Apache Kafka Tutorial- Apache Kafka For Beginners
+
+
+
+what is the Role of Zookeeper in Kafka?
+co-ordination service
+Zookeeper is an open source, high-performance co-ordination service used for distributed applications adapted by Kafka.
+ Learn more about Apache Kafka, follow the link: Apache Kafka Workflow | Kafka Pub-Sub Messaging
+ 
+ Mention what happens if the preferred replica is not in the ISR?
+ 
+ the controller will fail
+ 
+ If the preferred replica is not in the ISR, the controller will fail to move leadership to the preferred replica. Learn more about Apache Kafka, 
+ 
+ 
+ 
+ Mention what is the maximum size of the message does Kafka server can receive?
+ 1000000 bytes
+ 
+ 
+ The maximum size of the message that Kafka server can receive is 1000000 bytes.
+ 
+ 
+ 
+ Do we need zookeeper for running kafka?
+ 
+ Yes we need zookeeper for running kafka because zookeeper is a cluster coordinator for kafa which stores the topic offset id.
+ 
+ 
+ 
+ In which language kafka is written?
+ Kafka is written in Scala langauge. 
+ 
+ 
+ Which of the following can be referred to as a publish-subscribe messaging system?
+ 
+ Apache Kafka is basically the publish-subscribe based fault-tolerant messaging system.
+ 
+ 
+ What is referred to as a broker in Kafka?
+ 
+ Generally, Brokers are referred to as a Server in Apache Kafka
+ 
+ Which amongst the following is used to communicate between two nodes?
+ Kafka uses Zookeeper to communicate between two nodes.
+ 
+ How many traditional methods of message transfer are available in Kafka?
+ 
+ There are two methods: Queuing and Pusblish Subscribe. 
+ 
+ 
+ Queuing is method of which of these?
+ Traditional message transfer are of two types: Queuing and Publish Subscribe ; 
+ 
+ Which organization originally developed Kafka?
+ Linkedln
+ 
+ 
+ 
+ What major role does a Kafka Producer API play?
+ Basically, Kafka Producer API permits an application to publish a stream of records to one or more Kafka topics. 
+ 
+ 
+ 
+ Why is replication necessary in Kafka? Because it ensures that...
+ 
+ 
+ A published message will not be lost
+ 
+ 
+ If we replicate mesages, then a published message will not be lost, thats why we need Replication
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,4 @@
+[{"_id":{"$oid":"5b5ac732677ebe7670f4bddc"},"empid":101,"empname":"eee"},
+{"_id":{"$oid":"5b5ac797677ebe7670f4bde2"},"empid":102,"empname":"Divya","emailed":"rupa.jain85@gmail.com"},
+{"_id":{"$oid":"5b5ac797677ebe7670f4bde3"},"empid":101,"empname":"rupa","emailed":"rupa.jain85@gmail.com"},
+{"_id":{"$oid":"5b5ac797677ebe7670f4bde4"},"empid":103,"empname":"akka","emailed":"rupa.jain85@gmail.com"}]
