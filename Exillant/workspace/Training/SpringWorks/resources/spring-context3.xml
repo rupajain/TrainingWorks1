@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<context:annotation-config />
+	<!-- <context:component-scan base-package="com.training.autowire" /> -->
+		
+	<!-- 	<context:property-placeholder location="employeeinfo.properties"/> -->
+
+	<bean
+	class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="location">
+		<value>employeeinfo.properties
+		</value>
+	</property>
+</bean>
+	<!-- <bean id="camera" class="com.training.autowire.Camera"> <property name="type" 
+		value="vga"/> </bean> <bean id ="screen" class="com.training.autowire.Screen"> 
+		<property name="glassType" value="tuffen"/> <property name="len" value="5"/> 
+		<property name="bre" value="3"/> </bean> <bean id ="speaker" class="com.training.autowire.Speaker"> 
+		<property name="type" value="kmono"/> <property name="volLevels" value="10"/> 
+		</bean> -->
+
+	<!-- <bean id ="Mobile" class="com.training.autowire.Mobile"> <property 
+		name="camera" ref="camera"/> <property name="speaker" ref="speaker"/> <property 
+		name="screen" ref="screen"/> </bean> -->
+
+
+	<bean id="Mobile" class="com.training.autowire.Mobile" />
+
+</beans>

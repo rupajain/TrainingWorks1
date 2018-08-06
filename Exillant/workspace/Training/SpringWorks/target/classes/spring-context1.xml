@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	   http://www.springframework.org/schema/beans/spring-beans.xsd"
+	   default-init-method="ginit" default-destroy-method="gdestroy">
+	   <!-- when initialization happens spring will  -->
+	   
+	   
+	    <!-- prpoperty configuration goes here -->
+	   <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	   <property name="location">
+	   <value>employeeinfo.properties
+	   </value>
+	   </property>
+	   </bean>
+	   <bean class="com.training.bpp.EmployeeBeanProcessor"/>
+	   
+	  
+	   
+	   
+	   
+	   <!--  <bean id="employee" class= "com.training.employee.Employee" scope="singleton" init-method="init" destroy-method="destroy">-->
+	   <bean id="employee" class= "com.training.employee.Employee" scope="singleton" >
+	   <!-- autoboxing is taken care by spring -->
+	   <!-- thaty can be supplied wth bean either setter or con -->
+	   <!-- <property name="empId" value="101"/>
+	    <property name="empName" value="rupa"/>
+	     <property name="empSal" value="1000000"/> -->
+	     <property name="empId" value="${employee.empid}"/>
+	    <property name="empName" value="${employee.empname}"/>
+	     <property name="empSal" value="${employee.empsal}"/>
+	     </bean>
+	     
+	     
+	   </beans>
