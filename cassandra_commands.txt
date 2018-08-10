@@ -1,0 +1,229 @@
+create keyspace notebooks WITH replication={'class':'SimpleStrategy', 'replication_factor':1};
+
+use notebooks;
+
+cqlsh:notebooks> create table notebook(
+             ... id int,
+             ... title text,
+             ... description text,
+             ... primary key(id));
+             
+             
+             
+cqlsh:notebooks> describe notebook;
+
+cqlsh:notebooks> select * from notebook;
+
+
+cqlsh:notebooks> select * from notebook where title='Title One';
+InvalidRequest: Error from server: code=2200 [Invalid query] message="Cannot execute this query as it might involve data filtering and thus may have unpredictable performance. 
+If you want to execute this query despite the performance unpredictability, use ALLOW FILTERING"
+
+
+
+cqlsh:notebooks> update notebook set title='Title 1' where id=1;
+
+
+cqlsh:notebooks> select * from notebook;
+
+
+truncate notebook;
+
+
+
+drop table notebook;
+
+
+describe notebook;
+
+CREATE TABLE cyclist_name ( id UUID PRIMARY KEY, lastname text, firstname text );
+
+ insert into cyclist_name(id,lastname,firstname) values(now(),'Title Five','Title Description');
+
+ insert into cyclist_name(id,lastname,firstname) values(now(),'Title Five','Title Description');
+ 
+ insert into stuff (uid, name) values(now(), 'my name');
+ 
+ 
+ describe cyclist_name;
+ 
+ insert into cyclist_name(id,lastname,firstname) values(nextuid(),'Title Five','Title Description');
+ 
+ 
+ create keyspace videos WITH replication={'class':'SimpleStrategy', 'replication_factor':1};
+
+
+create table video(video_id timeuuid PRIMARY KEY,added_date timestamp,description text,title text,user_id UUID );
+drop table video;
+
+https://play.minio.io:9000/minio/abraarsyed/
+
+copy video.csv in a folder on desktop.
+
+in new browser..................
+EXIMR-IM-314:~ rupa.j$ cd Desktop/
+EXIMR-IM-314:Desktop rupa.j$ cd cassandra_files/
+EXIMR-IM-314:cassandra_files rupa.j$ ls
+videos.csv
+EXIMR-IM-314:cassandra_files rupa.j$ cqlsh
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.2 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+cqlsh> use videos;
+cqlsh:videos> 
+cqlsh:videos> describe video;
+
+
+ COPY video FROM 'videos.csv' WITH HEADER=true;
+ select * from video;
+ 
+ select * from video limit 10;
+ select * from video where title='Big Data Challenges';
+ 
+  select * from video where added_date='2015-02-09';
+  
+  
+  create table videoss(id int,name text,runtime int,year int,primary key(id));
+  
+  
+  insert into videoss(id,name,runtime,year) values(1,'Insurgent',119,2015);
+  
+  
+  
+  create table videos_by_title_year(title text,added_year int,added_date timestamp,description text,user_id uuid,video_id timeuuid,PRIMARY KEY((title,added_year)));
+  
+COPY videos_by_title_year FROM 'videos_by_title_year.csv' WITH HEADER=true;
+
+
+select * from videos_by_title_year where title='Introduction To Apache Cassandra' and added_year=2014;
+
+
+create table videoss(id int,name text,runtime int,year int,primary key((year),name));
+
+
+
+create table users(emailid text primary key,password text,userid int);
+
+create table test(key int,value text primary key(key));
+
+update test set value='Hey' where key=1;
+
+insert->update
+update->insert
+
+this is upsert.
+
+
+
+  create table videos_by_tag_year(title text,added_year int,added_date timestamp,description text,user_id uuid,video_id timeuuid,PRIMARY KEY((title,added_year)));
+  
+COPY bad_videos_by_tag_year(tag,added_year,video_id,added_date,description,title,user_id) from 'videos_by_tag_year.csv' WITH HEADER=true;
+create table bad_videos_by_tag_year( tag text, added_year int, added_date timestamp, title text, description text, user_id uuid, video_id timeuuid, primary key((video_id)));
+drop table bad_videos_by_tag_year;
+
+create table bad_videos_by_tag_year( tag text, added_year int, added_date timestamp, title text, description text, user_id uuid, video_id timeuuid, primary key((video_id)));
+
+
+COPY latest_videos FROM 'latest_videos.csv' WITH HEADER=true;
+COPY actors_by_video FROM 'actors_by_video.csv' WITH HEADER=true;
+COPY trailers_by_video FROM 'trailers_by_video.csv' WITH HEADER=true;
+
+COPY videos FROM 'videos.csv' WITH HEADER=true;
+
+
+COPY trailers_by_video FROM 'trailers_by_video.csv' WITH HEADER=true;
+
+COPY trailers_by_video FROM 'trailers_by_video.csv' WITH HEADER=true;
+
+
+
+
+
+create table videos_by_tag_year( tag text, added_year int, added_date timestamp, title text, description text, user_id uuid, video_id timeuuid, primary key((tag),added_year,video_id));
+
+
+COPY videos_by_tag_year(tag,added_year,video_id,added_date,description,title,user_id) from 'videos_by_tag_year.csv' WITH HEADER=true;
+
+
+
+select * from videos_by_tag_year where tag="comedy";
+select * from videos_by_tag_year where tag='cql' and added_year<2015;//yes
+
+select * from videos_by_tag_year where added_year<2015;//no
+
+create table videos_by_tag_year( tag text, added_year int, added_date timestamp, title text, description text, user_id uuid, video_id timeuuid, primary key((tag),added_year,video_id)) with clustering order by(added_year desc);//both are same
+create table videos_by_tag_year( tag text, added_year int, added_date timestamp, title text, description text, user_id uuid, video_id timeuuid, primary key(tag,added_year,video_id)) with clustering order by(added_year desc);//both are same
+COPY videos_by_tag_year(tag,added_year,video_id,added_date,description,title,user_id) from 'videos_by_tag_year.csv' WITH HEADER=true;
+
+
+
+alter table users add userid text;
+//collections in cassandra
+CREATE TABLE data(name text PRIMARY KEY, email list<text>);
+
+INSERT INTO data(name, email) VALUES ('ramu',
+['abc@gmail.com','cba@yahoo.com'])
+
+
+UPDATE data SET email = email +['xyz@tutorialspoint.com'] where name = 'ramu';
+
+
+CREATE TABLE data2 (name text PRIMARY KEY, phone set<varint>);
+
+
+
+
+UPDATE data2 SET phone = phone + {9848022330} where name = 'rahman';
+
+
+
+
+CREATE TABLE person (id int PRIMARY KEY, name set<text>);
+
+create type name(firstname text,secondname text);
+
+CREATE TABLE person (id int PRIMARY KEY, name frozen <name>);
+CREATE TABLE person (id int , name frozen <name>, PRIMARY KEY(id));
+
+
+insert into person(id,name) values(3,{firstname:'rupa',secondname:'jain'});
+select * from person;
+
+create type email(firstname text,secondname text);
+
+
+insert into person JSON '{"id":5,"name":{"firstname":"rupa","secondname”:"jain"}}';
+
+
+alter table users add userid int;
+
+
+
+create type name(firstname text,secondname text);
+create table videos_by_user(user_id uuid, name frozen <name>, emailid text,video_id timeuuid,title text, description text,uploaded_timestamp timestamp, primary key((user_id),uploaded_timestamp)) with clustering order by(uploaded_timestamp desc);
+
+
+select  * from latest_videos where title='movie Gone Girl' limit 50;
+
+
+
+select  * from latest_videos  limit 50;
+
+select  * from actors_by_video  character_name='Desi Collings';
+
+select  release_date,genres from  videos where video_id=8a6586d7-0ef2-11e5-b6a8-8438355b7e3a;//not working
+
+select  * from  videos where video_id=8a6586d7-0ef2-11e5-b6a8-8438355b7e3a;//working
+
+
+select  * from actors_by_video  where video_id=8a6586d7-0ef2-11e5-b6a8-8438355b7e3a;
+
+
+select  * from trailers_   where video_id=8a6586d7-0ef2-11e5-b6a8-8438355b7e3a;
+
+select * from videos where video_id=8a6586d7-0ef2-11e5-b6a8-8438355b7e3a;
+
+
+
+
+
